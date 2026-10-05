@@ -1,9 +1,7 @@
-<h1 align="center"> DevLinks </h1>
+<h1 align="center"> Demon Slayer </h1>
 
 <p align="center">
-Programa exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnologias WEB. <br/>
-<a href="https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito">Estude esse projeto em formato de vídeo clicando aqui.</a>
-</p>
+Site de Anime. <br/>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -19,7 +17,7 @@ Programa exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnolog
 <br>
 
 <p align="center">
-  <img alt="projeto Demon Slayer" src=".github/preview.jpg" width="100%">
+  <img alt="projeto Demon Slayer" src="file:///C:/Users/David%20Melo/Documents/Damon%20Slayer/imagens/Kyojuro%20Rengoku.jfif" width="100%">
 </p>
 
 ## 🚀 Tecnologias
