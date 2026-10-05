@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demon Slayer - Kimetsu no Yaiba | Descubra seu Hashira</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dsBlack: '#0d0e12',
+                        dsDark: '#161922',
+                        dsCard: '#1f2430',
+                        dsRed: '#e63946',
+                        dsGreen: '#2a9d8f',
+                        dsPurple: '#805ad5',
+                        dsYellow: '#f4a261',
+                        dsCyan: '#00f5d4'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #0d0e12;
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Padronagem dos Nichirin e Tanjiro Haori */
+        .tanjiro-pattern {
+            background-color: #0b0c10;
+            background-image: linear-gradient(45deg, #1f2430 25%, transparent 25%), 
+                              linear-gradient(-45deg, #1f2430 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #1f2430 75%), 
+                              linear-gradient(-45deg, transparent 75%, #1f2430 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0e12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e63946;
+            border-radius: 4px;
+        }
+
+        /* Text Flame Effect */
+        .flame-text {
+            background: linear-gradient(180deg, #fff200 0%, #ff5100 50%, #d00000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(31, 36, 48, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(230, 57, 70, 0.5);
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.2);
+        }
+
+        /* Glow effects */
+        .glow-red {
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.4);
+        }
+        .glow-purple {
+            box-shadow: 0 0 30px rgba(128, 90, 213, 0.4);
+        }
+
+        /* Animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-dsRed selection:text-white">
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-card bg-opacity-90 border-b border-gray-800" class="cabecalho">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-dsRed to-amber-500 flex items-center justify-center font-cinzel font-black text-white text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    <img src="https://logosmarcas.net/wp-content/uploads/2022/01/Demon-Slayer-Logo.png" alt="">
+                </div>
+                <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-dsRed transition-colors">
+                    DEMON <span class="text-dsRed">SLAYER</span>
+                </span>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                <a href="#about" class="hover:text-dsRed transition-colors">História</a>
+                <a href="#characters" class="hover:text-dsRed transition-colors">Protagonistas</a>
+                <a href="#hashiras" class="hover:text-dsRed transition-colors">Os Hashiras</a>
+                <a href="#gallery" class="hover:text-dsRed transition-colors">Galeria</a>
+                <a href="#quiz" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-dsRed to-red-700 text-white hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-md hover:shadow-red-900/50 flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-amber-300"></i> Faça o Quiz
+                </a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-300 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Drawer Mobile -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dsDark border-b border-gray-800 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-lg hover:text-dsRed transition-colors mobile-link">História</a>
+            <a href="#characters" class="block text-lg hover:text-dsRed transition-colors mobile-link">Protagonistas</a>
+            <a href="#hashiras" class="block text-lg hover:text-dsRed transition-colors mobile-link">Os Hashiras</a>
+            <a href="#gallery" class="block text-lg hover:text-dsRed transition-colors mobile-link">Galeria</a>
+            <a href="#quiz" class="block text-center py-3 rounded-xl bg-dsRed text-white font-bold mobile-link">
+                <i class="fa-solid fa-fire mr-2"></i> Descubra seu Hashira
+            </a>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-b from-dsBlack via-dsDark to-dsBlack">
+        <!-- Elementos Visuais de Fundo -->
+        <div class="absolute inset-0 z-0 opacity-20 tanjiro-pattern"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-dsRed/30 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse-glow"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest text-dsRed bg-dsRed/10 border border-dsRed/30 rounded-full uppercase">
+                鬼滅の刃 • Kimetsu no Yaiba
+            </span>
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none mb-6">
+                CORTANDO A <span class="flame-text">ESCURIDÃO</span> COM A LÂMINA
+            </h1>
+            <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Acompanhe a jornada de Tanjiro Kamado contra as forças demoníacas de Muzan e descubra qual dos lendários <strong>Pilares (Hashiras)</strong> reflete o seu espírito guerreiro.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#quiz" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-dsRed via-red-600 to-amber-600 text-white font-bold text-lg hover:scale-105 transition-all duration-300 shadow-xl shadow-red-900/40 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-crosshairs"></i> Qual Hashira Você Seria?
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-gray-200 hover:text-white hover:bg-white/10 font-semibold text-lg transition-all flex items-center justify-center gap-2">
+                    Explorar Universo <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-dsDark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mb-4">
+                    A História de <span class="text-dsRed">Demon Slayer</span>
+                </h2>
+                <div class="w-24 h-1 bg-dsRed mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Em um Japão da era Taisho, a paz da família Kamado é destruída em uma única noite por um demônio implacável.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-dsRed/20 text-dsRed flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-[#00f5d4] fa-skull"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-white mb-3">A Tragédia Inicial</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        Tanjiro retorna para casa e encontra sua família massacrada. Sua irmã mais nova, Nezuko, é a única sobrevivente, mas foi transformada em um Oni (demônio).
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-white mb-3">Esquadrão de Caçadores</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        Determinando encontrar uma cura para Nezuko, Tanjiro se treina na Respiração da Água e entra para a Demon Slayer Corps, uma organização secreta centenária.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-white mb-3">Muzan & As Luas</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        O objetivo supremo é derrotar Muzan Kibutsuji, o progenitor de todos os demônios, e seus Doze Kizuki (Luas Demoníacas), em batalhas épicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="characters" class="py-24 bg-dsBlack">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-dsRed font-bold tracking-wider uppercase text-sm">Os Protagonistas</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mt-2">
+                    O Esquadrão Principal
+                </h2>
+                <div class="w-24 h-1 bg-dsRed mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tanjiro Kamado -->
+                <div class="glass-card rounded-2xl p-6 text-center group hover:border-emerald-500/50 transition-all">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-emerald-500/30 group-hover:border-emerald-500 transition-all shadow-lg">
+                        <img src="imagens/Tanjiro Kamado.jfif" alt="Tanjiro Kamado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/300x300/1f2430/2a9d8f?text=Tanjiro'">
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white">Tanjiro Kamado</h3>
+                    <span class="inline-block text-xs font-semibold px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full my-2">
+                        Respiração da Água / Sol
+                    </span>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Gentil, determinado e dotado de um olfato extraordinário. Busca salvar sua irmã a qualquer custo.
+                    </p>
+                </div>
+
+                <!-- Nezuko Kamado -->
+                <div class="glass-card rounded-2xl p-6 text-center group hover:border-pink-500/50 transition-all">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pink-500/30 group-hover:border-pink-500 transition-all shadow-lg">
+                        <img src="imagens/Nezuko Kamado.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center 0px;" alt="Nezuko Kamado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/300x300/1f2430/e63946?text=Nezuko'">
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white">Nezuko Kamado</h3>
+                    <span class="inline-block text-xs font-semibold px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full my-2">
+                        Kekkijutsu (Chamas Sangrentas)
+                    </span>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Transformada em Oni, reteve sua humanidade para proteger os humanos ao lado de seu irmão.
+                    </p>
+                </div>
+
+                <!-- Zenitsu Agatsuma -->
+                <div class="glass-card rounded-2xl p-6 text-center group hover:border-yellow-500/50 transition-all">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-500/30 group-hover:border-yellow-500 transition-all shadow-lg">
+                        <img src="imagens/Zenitsu Agatsuma.jpg" alt="Zenitsu Agatsuma" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https:'//placehold.co/300x300/1f2430/f4a261?text=Zenitsu'">
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white">Zenitsu Agatsuma</h3>
+                    <span class="inline-block text-xs font-semibold px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full my-2">
+                        Respiração Trovão
+                    </span>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Medroso por natureza, desperta uma velocidade avassaladora e um poder devastador quando adormece.
+                    </p>
+                </div>
+
+                <!-- Inosuke Hashibira -->
+                <div class="glass-card rounded-2xl p-6 text-center group hover:border-blue-500/50 transition-all">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-blue-500/30 group-hover:border-blue-500 transition-all shadow-lg">
+                        <img src="imagens/Inosuke Hashibira.jfif" alt="Inosuke Hashibira" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https:'//placehold.co/300x300/1f2430/00f5d4?text=Inosuke'">
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white">Inosuke Hashibira</h3>
+                    <span class="inline-block text-xs font-semibold px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full my-2">
+                        Respiração da Fera
+                    </span>
+                    <p class="text-gray-400 text-sm mt-2">
+                        Criado por javalis, possui estilo selvagem de lâminas duplas e um orgulho inabalável em batalha.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hashiras" class="py-24 bg-dsDark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-dsRed font-bold tracking-wider uppercase text-sm">A Elite do Esquadrão</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mt-2">
+                    Os 9 Hashiras (Pilares)
+                </h2>
+                <div class="w-24 h-1 bg-dsRed mx-auto rounded-full mt-4"></div>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Os espadachins mais poderosos da história da corporação, cada um mestre absoluto de um estilo de Respiração.
+                </p>
+            </div>
+
+            <!-- Grid de Hashiras -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="hashiraGrid">
+                <!-- Os cards dos Hashiras são injetados dinamicamente via JS ou estruturados de forma limpa -->
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-dsBlack">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white">
+                    Galeria de <span class="text-dsRed">Batalha</span>
+                </h2>
+                <div class="w-24 h-1 bg-dsRed mx-auto rounded-full mt-4 mb-4"></div>
+                <p class="text-gray-400">Clique nas imagens para expandir em alta resolução.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="galleryGrid">
+                <!-- Imagens da Galeria carregadas via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-24 bg-gradient-to-b from-dsDark to-dsBlack relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-6 sm:p-12 relative overflow-hidden border-2 border-dsRed/30">
+                <div class="text-center mb-10">
+                    <span class="px-4 py-1.5 rounded-full bg-dsRed/20 text-dsRed text-xs sm:text-sm font-bold uppercase tracking-wider">
+                        Teste de Compatibilidade
+                    </span>
+                    <h2 class="font-cinzel text-3xl sm:text-5xl font-black text-white mt-4">
+                        Qual Hashira Você Seria?
+                    </h2>
+                    <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                        Responda às perguntas abaixo com base nas suas atitudes em combate e vida real!
+                    </p>
+                </div>
+
+                <!-- Container do Quiz -->
+                <div id="quizContainer">
+                    <!-- Barra de Progresso -->
+                    <div class="w-full bg-gray-800 h-2.5 rounded-full mb-8 overflow-hidden">
+                        <div id="quizProgressBar" class="bg-gradient-to-r from-dsRed to-amber-500 h-full w-0 transition-all duration-500"></div>
+                    </div>
+
+                    <!-- Pergunta e Opções -->
+                    <div id="questionBox" class="min-h-[300px] flex flex-col justify-between">
+                        <div>
+                            <span id="questionStep" class="text-xs font-bold text-dsRed uppercase tracking-wider block mb-2">Pergunta 1 de 6</span>
+                            <h3 id="questionText" class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-6">Carregando pergunta...</h3>
+                            <div id="optionsContainer" class="space-y-3">
+                                <!-- Botões das opções serão gerados por JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card de Resultado (Oculto inicialmente) -->
+                <div id="quizResultBox" class="hidden text-center">
+                    <div class="animate-fade-in">
+                        <span class="text-sm font-bold text-emerald-400 uppercase tracking-widest block mb-2">Seu Espírito Guerreiro</span>
+                        <h3 id="resultTitle" class="font-cinzel text-3xl sm:text-5xl font-black text-white mb-4">Nome do Hashira</h3>
+                        
+                        <div class="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-dsRed shadow-2xl mb-6">
+                            <img id="resultImage" src="" alt="Resultado Hashira" class="w-full h-full object-cover">
+                        </div>
+
+                        <div class="bg-dsBlack/60 p-6 rounded-2xl mb-8 border border-gray-800 text-left max-w-xl mx-auto">
+                            <h4 class="font-cinzel font-bold text-amber-400 text-lg mb-2" id="resultBreath">Respiração: -</h4>
+                            <p id="resultDescription" class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                                Descrição da personalidade e estilo de luta.
+                            </p>
+                        </div>
+
+                        <button id="restartQuizBtn" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-dsRed to-red-700 text-white font-bold hover:scale-105 transition-all shadow-lg shadow-red-900/50">
+                            <i class="fa-solid fa-rotate-right mr-2"></i> Refazer o Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Lightbox da Galeria -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md">
+        <button id="closeLightbox" class="absolute top-6 right-6 text-white text-3xl hover:text-dsRed transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full">
+            <img id="lightboxImg" src="" alt="Imagem Ampliada" class="max-h-[85vh] mx-auto rounded-xl shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-center text-gray-300 font-cinzel text-lg mt-4"></p>
+        </div>
+    </div>
+
+    <footer class="bg-dsBlack border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded-full bg-dsRed flex items-center justify-center text-white font-black font-cinzel text-sm">
+                    滅
+                </div>
+                <span class="font-cinzel text-lg font-bold text-white tracking-widest">KIMETSU NO YAIBA</span>
+            </div>
+            <p class="text-gray-500 text-sm max-w-md mx-auto mb-6">
+                Landing Page demonstrativa e interativa dedicada aos fãs de Demon Slayer. Todos os direitos reservados ao criador Germano Lucas.
+            </p>
+            <div class="text-xs text-gray-600">
+                &copy; 2026 Demon Slayer Fan Experience. Feito para Caçadores de Demônios.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hashirasData = [
+            {
+                id: 'giyu',
+                name: 'Giyu Tomioka',
+                title: 'Pilar da Água',
+                breath: 'Respiração da Água',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQmvqc7xwpNV7WknqYWWqVm-MnqLUH8DSyK7yUG7Z93w&s=10',
+                desc: 'Reservado, calmo e extremamente focado. Giyu raramente demonstra emoções, mas carrega um senso profundo de dever e compaixão secreta.',
+                color: 'border-blue-500',
+                tagBg: 'bg-blue-500/20 text-blue-400'
+            },
+            {
+                id: 'rengoku',
+                name: 'Kyojuro Rengoku',
+                title: 'Pilar das Chamas',
+                breath: 'Respiração das Chamas',
+                image: 'imagens/Kyojuro Rengoku.jfif',
+                desc: 'Entusiasta, honrado e com uma determinação inabalável. Rengoku queima com uma paixão ardente para proteger os fracos.',
+                color: 'border-amber-500',
+                tagBg: 'bg-amber-500/20 text-amber-400'
+            },
+            {
+                id: 'shinobu',
+                name: 'Shinobu Kocho',
+                title: 'Pilar dos Insetos',
+                breath: 'Respiração dos Insetos',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGUCIqcX9BQf2hWiSYs7JXllHsRwvy9FaM8_JvNl605A&s=10',
+                desc: 'GENTIL na superfície, mas estrategista leal e mortal. Usa veneno de Wisteria para compensar sua falta de força física em combate.',
+                color: 'border-purple-500',
+                tagBg: 'bg-purple-500/20 text-purple-400'
+            },
+            {
+                id: 'tengen',
+                name: 'Tengen Uzui',
+                title: 'Pilar do Som',
+                breath: 'Respiração do Som',
+                image: 'imagens/Tengen Uzui.jfif',
+                desc: 'Extravagante, autoconfiante e ex-shinobi. Tengen busca sempre fazer de cada batalha um show inesquecível e vistoso.',
+                color: 'border-yellow-500',
+                tagBg: 'bg-yellow-500/20 text-yellow-400'
+            },
+            {
+                id: 'muichiro',
+                name: 'Muichiro Tokito',
+                title: 'Pilar da Névoa',
+                breath: 'Respiração da Névoa',
+                image: 'imagens/Muichiro Tokito.jpg',
+                desc: 'Prodígio genial que domina a espada em ritmo impressionante. Costuma viver avoados em pensamentos, mas é letalmente preciso.',
+                color: 'border-teal-500',
+                tagBg: 'bg-teal-500/20 text-teal-400'
+            },
+            {
+                id: 'mitsuri',
+                name: 'Mitsuri Kanroji',
+                title: 'Pilar do Amor',
+                breath: 'Respiração do Amor',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEcM0i10HaDj3pe4Fnq_tDIIZzohfmN6u-Zyit36Oumw&s=10',
+                desc: 'Carinhosa, apaixonada e incrivelmente forte. Combate com uma espada flexível tipo chicote e ama proteger a todos.',
+                color: 'border-pink-500',
+                tagBg: 'bg-pink-500/20 text-pink-400'
+            },
+            {
+                id: 'sanemi',
+                name: 'Sanemi Shinazugawa',
+                title: 'Pilar do Vento',
+                breath: 'Respiração do Vento',
+                image: 'https://depor.com/resizer/v2/PFDADXXWKBEQ3MVSDGQU5V6E2I.jpg?auth=77821164c2d9a0216509818d4f2ff983d497a9e2a42495ac3d033c5948db280e&width=1600&height=1200&quality=90&smart=true',
+                desc: 'Agressivo, feroz e destemido. Seu sangue raro e ataques cortantes rápidos o tornam um pesadelo absoluto para qualquer demônio.',
+                color: 'border-emerald-500',
+                tagBg: 'bg-emerald-500/20 text-emerald-400'
+            },
+            {
+                id: 'gyomei',
+                name: 'Gyomei Himejima',
+                title: 'Pilar da Rocha',
+                breath: 'Respiração da Rocha',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKPjXJgYcSnpkcBM3ANZxN6gWewzLLM7RcXeT-U8jOw&s=10',
+                desc: 'O Hashira mais poderoso fisicamente. Um monge gigante e emotivo que luta usando um machado e bola de espinhos acorrentados.',
+                color: 'border-gray-400',
+                tagBg: 'bg-gray-500/20 text-gray-300'
+            },
+            {
+                id: 'obanai',
+                name: 'Obanai Iguro',
+                title: 'Pilar da Serpente',
+                breath: 'Respiração da Serpente',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi-Yts1QSVO974LYgiJLZ1KyCB2I3UWD8M231tYRzIMQ&s=10',
+                desc: 'Rigoroso, analítico e leal aos seus companheiros. Luta com movimentos imprevisíveis e contorcidos como os de uma serpente.',
+                color: 'border-indigo-500',
+                tagBg: 'bg-indigo-500/20 text-indigo-400'
+            }
+        ];
+
+        const galleryImages = [
+            { url: 'imagens/O Despertar da Respiração do Sol.jpg', title: 'O Despertar da Respiração do Sol' },
+            { url: 'imagens/A Chama Eterna de Rengoku.jpg', title: 'A Chama Eterna de Rengoku' },
+            { url: 'imagens/A Dança Silenciosa dos Insetos.png', title: 'A Dança Silenciosa dos Insetos' },
+            { url: 'imagens/O Espetáculo do Som.png', title: 'O Espetáculo do Som' },
+            { url: 'imagens/A Névoa Impenetrável.png', title: 'A Névoa Impenetrável' },
+            { url: 'imagens/A Calmaria da Água Fluida.jpg', title: 'A Calmaria da Água Fluida' }
+        ];
+
+        const quizQuestions = [
+            {
+                question: 'Qual é o seu estilo principal diante de um problema ou ameaça?',
+                options: [
+                    { text: 'Ataco com paixão e energia total sem vacilar!', hashira: 'rengoku' },
+                    { text: 'Mantenho a calma, observo e espero o momento ideal.', hashira: 'giyu' },
+                    { text: 'Uso estratégia, agilidade e inteligência letal.', hashira: 'shinobu' },
+                    { text: 'Prefiro chegar com impacto extravagante e marcante!', hashira: 'tengen' }
+                ]
+            },
+            {
+                question: 'O que você mais valoriza em uma batalha ou objetivo?',
+                options: [
+                    { text: 'Proteger e inspirar as pessoas ao meu redor.', hashira: 'rengoku' },
+                    { text: 'A precisão e a eficácia silenciosa.', hashira: 'muichiro' },
+                    { text: 'A força bruta física e a fé inabalável.', hashira: 'gyomei' },
+                    { text: 'A ferocidade de vencer sem dar espaço ao inimigo.', hashira: 'sanemi' }
+                ]
+            },
+            {
+                question: 'Como seus amigos descreveriam sua personalidade?',
+                options: [
+                    { text: 'Afetuoso(a), carismático(a) e cheio(a) de energia.', hashira: 'mitsuri' },
+                    { text: 'Reservado(a), misterioso(a) e focado(a).', hashira: 'obanai' },
+                    { text: 'Brilhante, confiante e estiloso(a).', hashira: 'tengen' },
+                    { text: 'Tranquilo(a), às vezes avoados, mas surpreendente.', hashira: 'muichiro' }
+                ]
+            },
+            {
+                question: 'Qual ambiente ou elemento natural mais combina com você?',
+                options: [
+                    { text: 'Chamas escaldantes e o calor da paixão.', hashira: 'rengoku' },
+                    { text: 'Rios fluídos, mar aberto e tranquilidade.', hashira: 'giyu' },
+                    { text: 'Névoa densa e mistério nas montanhas.', hashira: 'muichiro' },
+                    { text: 'Ventos tempestuosos e vendavais incontroláveis.', hashira: 'sanemi' }
+                ]
+            },
+            {
+                question: 'Se um demônio poderoso aparecesse agora, qual seria seu primeiro impulso?',
+                options: [
+                    { text: 'Lutar na linha de frente para dar tempo aos outros.', hashira: 'gyomei' },
+                    { text: 'Analisar o ponto fraco do inimigo para contra-atacar.', hashira: 'shinobu' },
+                    { text: 'Lançar um ataque devastador sem hesitar.', hashira: 'sanemi' },
+                    { text: 'Usar táticas imprevisíveis e envolventes.', hashira: 'obanai' }
+                ]
+            },
+            {
+                question: 'Qual dessas frases mais representa sua filosofia de vida?',
+                options: [
+                    { text: '"Mantenha o seu coração queimando com orgulho!"', hashira: 'rengoku' },
+                    { text: '"Eu não sou digno... mas cumprirei meu dever."', hashira: 'giyu' },
+                    { text: '"Com determinação e amor, podemos superar qualquer coisa!"', hashira: 'mitsuri' },
+                    { text: '"A vida deve ser vivida da forma mais extravagante possível!"', hashira: 'tengen' }
+                ]
+            }
+        ];
+
+        function renderHashiras() {
+            const grid = document.getElementById('hashiraGrid');
+            grid.innerHTML = hashirasData.map(h => `
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-dsRed/50 transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="relative h-48 w-full rounded-xl overflow-hidden mb-5">
+                            <img src="${h.image}" alt="${h.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x300/1f2430/ffffff?text=${encodeURIComponent(h.name)}'">
+                            <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full ${h.tagBg} backdrop-blur-md">
+                                ${h.title}
+                            </span>
+                        </div>
+                        <h3 class="font-cinzel text-2xl font-bold text-white mb-1">${h.name}</h3>
+                        <span class="text-xs text-dsRed font-semibold uppercase tracking-wider block mb-3">${h.breath}</span>
+                        <p class="text-gray-400 text-sm leading-relaxed">${h.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = galleryImages.map((img, idx) => `
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer h-60 glass-card" onclick="openLightbox(${idx})">
+                    <img src="${img.url}" alt="${img.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1f2430/e63946?text=Demon+Slayer'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <p class="font-cinzel text-white text-sm font-bold"><i class="fa-solid fa-expand mr-2 text-dsRed"></i> ${img.title}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* LIGHTBOX logic */
+        function openLightbox(index) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaption');
+            
+            modalImg.src = galleryImages[index].url;
+            caption.innerText = galleryImages[index].title;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        document.getElementById('closeLightbox').addEventListener('click', () => {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+
+        let currentQuestion = 0;
+        let scoreTracker = {};
+
+        function initQuiz() {
+            currentQuestion = 0;
+            scoreTracker = {};
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizResultBox').classList.add('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentQuestion];
+            const progress = ((currentQuestion) / quizQuestions.length) * 100;
+            
+            document.getElementById('quizProgressBar').style.width = `${progress}%`;
+            document.getElementById('questionStep').innerText = `Pergunta ${currentQuestion + 1} de ${quizQuestions.length}`;
+            document.getElementById('questionText').innerText = q.question;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-4 rounded-xl bg-dsDark/80 border border-gray-700/60 hover:border-dsRed hover:bg-dsRed/10 text-gray-200 hover:text-white transition-all duration-200 flex items-center justify-between group';
+                btn.innerHTML = `
+                    <span class="text-sm sm:text-base font-medium">${opt.text}</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500 group-hover:text-dsRed transition-colors"></i>
+                `;
+                btn.onclick = () => selectAnswer(opt.hashira);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(hashiraKey) {
+            scoreTracker[hashiraKey] = (scoreTracker[hashiraKey] || 0) + 1;
+            currentQuestion++;
+
+            if (currentQuestion < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResultBox').classList.remove('hidden');
+
+            // Encontrar o Hashira com maior pontuação
+            let topHashiraId = 'rengoku';
+            let maxCount = 0;
+            for (const [id, count] of Object.entries(scoreTracker)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    topHashiraId = id;
+                }
+            }
+
+            const resultHashira = hashirasData.find(h => h.id === topHashiraId) || hashirasData[1];
+
+            document.getElementById('resultTitle').innerText = resultHashira.name;
+            document.getElementById('resultImage').src = resultHashira.image;
+            document.getElementById('resultImage').onerror = function() {
+                this.src = 'https://placehold.co/400x400/1f2430/e63946?text=' + encodeURIComponent(resultHashira.name);
+            };
+            document.getElementById('resultBreath').innerText = `Título: ${resultHashira.title} (${resultHashira.breath})`;
+            document.getElementById('resultDescription').innerText = resultHashira.desc;
+        }
+
+        document.getElementById('restartQuizBtn').addEventListener('click', initQuiz);
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Inicialização global
+        window.onload = function() {
+            renderHashiras();
+            renderGallery();
+            initQuiz();
+        };
+    </script>
+</body>
+</html>
